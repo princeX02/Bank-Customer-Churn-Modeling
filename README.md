@@ -19,7 +19,8 @@ This project predicts customer churn for a bank using machine learning models. T
 │   ├── 03_feature_engineering.ipynb
 │   ├── 04_modeling_xgboost.ipynb
 │   └── 05_explainability_shap.ipynb
-├── models/
+├── app.py
+├── index.py
 ├── requirements.txt
 └── README.md
 ```
