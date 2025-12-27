@@ -11,8 +11,14 @@ bundle = joblib.load("models/best_churn_model.pkl")
 model = bundle["model"]
 preprocessor = bundle["preprocessor"]
 
-app = FastAPI(title="Bank Customer Churn API", version="1.0")
+# FastAPI app
+app = FastAPI(
+    title="Bank Customer Churn API",
+    version="1.0",
+    description="Predict bank customer churn probability"
+)
 
+# Input schema
 class CustomerInput(BaseModel):
     CreditScore: int
     Geography: str
@@ -25,22 +31,24 @@ class CustomerInput(BaseModel):
     IsActiveMember: int
     EstimatedSalary: float
 
+# Health check
 @app.get("/")
 def home():
     return {"status": "FastAPI is running"}
 
+# Prediction endpoint
 @app.post("/predict")
 def predict_churn(data: CustomerInput):
     df = pd.DataFrame([data.dict()])
+
+    # Feature engineering (match training)
     df["BalancePerProduct"] = df["Balance"] / (df["NumOfProducts"] + 1)
     df["IsSenior"] = (df["Age"] >= 50).astype(int)
-
     bins = [0, 580, 650, 720, 1000]
     labels = [0, 1, 2, 3]
-    df["CreditRisk"] = pd.cut(
-        df["CreditScore"], bins=bins, labels=labels, include_lowest=True
-    ).astype(int)
+    df["CreditRisk"] = pd.cut(df["CreditScore"], bins=bins, labels=labels, include_lowest=True).astype(int)
 
+    # Prediction
     X_processed = preprocessor.transform(df)
     prob = model.predict_proba(X_processed)[0, 1]
 
@@ -60,3 +68,7 @@ def predict_churn(data: CustomerInput):
         "risk_level": risk,
         "recommended_action": action
     }
+if __name__ == "__main__":
+    import uvicorn
+    uvicorn.run(app, host="127.0.0.1", port=8001)   
+    
