@@ -30,6 +30,11 @@ This project predicts customer churn for a bank using machine learning models. T
 pip install -r requirements.txt
 ```
 
+## Deployment
+
+- **Streamlit Cloud:** [Bank Churn Predictor on Streamlit](https://bank-customer-churn-modeling-phwdark2rasmb5fu4hnuy5.streamlit.app/)  
+- **Render:** [Bank Churn Predictor on Render](https://dashboard.render.com/web/srv-d57r9p8gjchc739p0hsg)
+
 ## Usage
 1. Run notebooks in order (01 → 05)
 2. Each notebook is self-contained and documented
