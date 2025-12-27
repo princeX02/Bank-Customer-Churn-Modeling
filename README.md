@@ -40,6 +40,12 @@ pip install -r requirements.txt
 4. **Modeling**: XGBoost, Random Forest, Logistic Regression
 5. **Explainability**: SHAP values for model interpretation
 
+## Algorithms Used
+- logistic regression
+- random forest
+- XGBoost
+- Smooth based model
+
 ## Results
 - **Best Model**: XGBoost
 - **Accuracy**: XX%
@@ -53,5 +59,13 @@ pip install -r requirements.txt
 - matplotlib, seaborn
 - shap
 
+## Explanation
+“I used Logistic Regression for interpretability, Random Forest for non-linear patterns,   XGBoost for high performance, and SMOTE to handle class imbalance.
+I evaluated all models using ROC-AUC and recall because missing a churn customer has high business cost.
+XGBoost performed best, but I balanced performance with explainability based on business needs.”
 ## Author
-[Your Name]
+- Prince Chaudhary
+- Email:princechaudhary@gmail.com
+- GitHub: [github.com/princechaudhary](https://github.com/princechaudhary)
+- LinkedIn: [linkedin.com/in/prince-chaudhary](https://www.linkedin.com/in/prince-chaudhary/)
+
