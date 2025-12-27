@@ -49,7 +49,7 @@ if predict_clicked:
     }
 
     try:
-        response = requests.post("http://127.0.0.1:8002/predict", json=payload)
+        response = requests.post("http://127.0.0.1:8001/predict", json=payload)
         data = response.json()
 
         st.subheader("📊 Prediction Result")
