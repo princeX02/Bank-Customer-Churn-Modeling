@@ -1,10 +1,12 @@
 import streamlit as st
 import requests
 import pandas as pd
+import os
 
-API_URL = "http://backend:8000/predict"
+# API_URL = "http://backend:8000/predict"
 # API_URL = "http://127.0.0.1:8001/predict"
 # API_URL = "https://bank-customer-churn-modeling-1.onrender.com/predict"
+API_URL = os.getenv("API_URL", "http://backend:8000/predict")
 
 st.set_page_config(page_title="Bank Churn Predictor", page_icon="🏦", layout="wide")
 st.title("🏦 Bank Customer Churn Predictor")
@@ -80,3 +82,7 @@ if predict_clicked:
         st.error("❌ Cannot connect to backend.")
     except Exception as e:
         st.error(f"💥 Unexpected error: {e}")
+
+
+## docker-compose up --build
+## docker-compose up --build

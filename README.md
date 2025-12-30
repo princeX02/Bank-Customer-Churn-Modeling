@@ -4,74 +4,47 @@
 This project predicts customer churn for a bank using machine learning models. The goal is to identify customers likely to leave the bank so retention strategies can be implemented.
 
 ## Dataset
-- **Source**: Churn_Modelling.csv
+- **Source**: `Churn_Modelling.csv`
 - **Records**: [X rows]
 - **Features**: Customer demographics, account information, activity metrics
-- **Target**: Exited (1 = Churned, 0 = Retained)
+- **Target**: `Exited` (1 = Churned, 0 = Retained)
 
 ## Project Structure
-```
 ├── data/
-│   └── Churn_Modelling.csv
+│ └── Churn_Modelling.csv
 ├── notebooks/
-│   ├── 01_data_cleaning.ipynb
-│   ├── 02_eda.ipynb
-│   ├── 03_feature_engineering.ipynb
-│   ├── 04_modeling_xgboost.ipynb
-│   └── 05_explainability_shap.ipynb
-├── app.py
-├── index.py
-├── requirements.txt
+│ ├── 01_data_cleaning.ipynb
+│ ├── 02_eda.ipynb
+│ ├── 03_feature_engineering.ipynb
+│ ├── 04_modeling_xgboost.ipynb
+│ └── 05_explainability_shap.ipynb
+├── backend/
+│ ├── app.py
+| ├── Dockerfile
+│ └── requirements.txt
+├── frontend/
+│ ├── index.py
+│ ├── Dockerfile
+│ └── requirements.txt
+├── docker-compose.yml
 └── README.md
-```
+
 
 ## Installation
+
+### Local setup
 ```bash
-pip install -r requirements.txt
-```
+# Clone the repo
+git clone <https://github.com/princeX02/Bank-Customer-Churn-Modeling.git>
+cd Bank-Customer-Churn-Prediction
 
-## Deployment
+# Install Python dependencies
+pip install -r backend/requirements.txt
+pip install -r frontend/requirements.txt
 
-- **Streamlit Cloud:** [Bank Churn Predictor on Streamlit](https://bank-customer-churn-modeling-phwdark2rasmb5fu4hnuy5.streamlit.app/)  
-- **Render:** [Bank Churn Predictor on Render](https://dashboard.render.com/web/srv-d57r9p8gjchc739p0hsg)
 
-## Usage
-1. Run notebooks in order (01 → 05)
-2. Each notebook is self-contained and documented
-
-## Methodology
-1. **Data Cleaning**: Handle missing values, outliers
-2. **EDA**: Analyze patterns and correlations
-3. **Feature Engineering**: Create new features, encoding
-4. **Modeling**: XGBoost, Random Forest, Logistic Regression
-5. **Explainability**: SHAP values for model interpretation
-
-## Algorithms Used
-- logistic regression
-- random forest
-- XGBoost
-- Smooth based model
-
-## Results
-- **Best Model**: XGBoost
-- **Accuracy**: XX%
-- **AUC-ROC**: XX
-- **Key Features**: [Top 3 important features]
-
-## Technologies
-- Python 3.x
-- pandas, numpy, scikit-learn
-- xgboost
-- matplotlib, seaborn
-- shap
-
-## Explanation
-“I used Logistic Regression for interpretability, Random Forest for non-linear patterns,   XGBoost for high performance, and SMOTE to handle class imbalance.
-I evaluated all models using ROC-AUC and recall because missing a churn customer has high business cost.
-XGBoost performed best, but I balanced performance with explainability based on business needs.”
-## Author
-- Prince Chaudhary
-- Email:princechaudhary@gmail.com
-- GitHub: [github.com/princechaudhary](https://github.com/princechaudhary)
-- LinkedIn: [linkedin.com/in/prince-chaudhary](https://www.linkedin.com/in/prince-chaudhary/)
+# Build and run using Docker Compose
+docker-compose up --build
+Backend (FastAPI): http://localhost:8000/predict
+Frontend (Streamlit): http://localhost:8501
 
