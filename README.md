@@ -63,6 +63,8 @@ Bank-Customer-Churn-Modeling/
    Ensure you have Docker and Docker Compose installed. Then run:
    ```bash
    docker-compose up --build
+   or
+   docker compose -f docker-compose.yml up
    ```
 
 3. **Access the Application**:
