@@ -1,50 +1,70 @@
-# Bank Customer Churn Prediction
+# 🏦 Bank Customer Churn Prediction
 
-## Overview
-This project predicts customer churn for a bank using machine learning models. The goal is to identify customers likely to leave the bank so retention strategies can be implemented.
+## 📌 Overview
+Customer churn is a major concern for banks and financial institutions. This project uses **machine learning techniques** to predict whether a customer is likely to leave the bank based on demographic, behavioral, and account-related features.
 
-## Dataset
+The solution helps businesses:
+- Identify high-risk customers  
+- Take proactive retention measures  
+- Improve customer lifetime value  
+
+---
+
+## 📊 Dataset
 - **Source**: `Churn_Modelling.csv`
-- **Records**: [X rows]
-- **Features**: Customer demographics, account information, activity metrics
-- **Target**: `Exited` (1 = Churned, 0 = Retained)
+- **Number of Records**: ~10,000
+- **Features**:
+  - Customer demographics (Age, Gender, Geography)
+  - Account information (Balance, Credit Score, Tenure)
+  - Activity metrics (Number of Products, IsActiveMember)
+- **Target Variable**:
+  - `Exited`
+    - `1` → Customer churned
+    - `0` → Customer retained
 
-## Project Structure
+---
+
+## 🗂️ Project Structure
+```bash
+Bank-Customer-Churn-Modeling/
+│
 ├── data/
-│ └── Churn_Modelling.csv
+│   └── Churn_Modelling.csv
+│
 ├── notebooks/
-│ ├── 01_data_cleaning.ipynb
-│ ├── 02_eda.ipynb
-│ ├── 03_feature_engineering.ipynb
-│ ├── 04_modeling_xgboost.ipynb
-│ └── 05_explainability_shap.ipynb
+│   ├── 01_data_cleaning.ipynb
+│   ├── 02_eda.ipynb
+│   ├── 03_feature_engineering.ipynb
+│   ├── 04_modeling_xgboost.ipynb
+│   └── 05_explainability_shap.ipynb
+│
 ├── backend/
-│ ├── app.py
-| ├── Dockerfile
-│ └── requirements.txt
+│   ├── app.py                  # FastAPI backend
+│   ├── Dockerfile
+│   └── requirements.txt
+│
 ├── frontend/
-│ ├── index.py
-│ ├── Dockerfile
-│ └── requirements.txt
+│   ├── index.py                # Streamlit frontend
+│   ├── Dockerfile
+│   └── requirements.txt
+│
 ├── docker-compose.yml
 └── README.md
 
+```
 
-## Installation
+##      Installation & Setup
+1. **Clone the repository**:
+   ```bash
+   git clone https://github.com/princeX02/Bank-Customer-Churn-Modeling.git
+   cd Bank-Customer-Churn-Modeling
+   ```  
+2. **Run with Docker Compose**:
+   Ensure you have Docker and Docker Compose installed. Then run:
+   ```bash
+   docker-compose up --build
+   ```
 
-### Local setup
-```bash
-# Clone the repo
-git clone <https://github.com/princeX02/Bank-Customer-Churn-Modeling.git>
-cd Bank-Customer-Churn-Prediction
-
-# Install Python dependencies
-pip install -r backend/requirements.txt
-pip install -r frontend/requirements.txt
-
-
-# Build and run using Docker Compose
-docker-compose up --build
-Backend (FastAPI): http://localhost:8000/predict
-Frontend (Streamlit): http://localhost:8501
-
+3. **Access the Application**:
+   - Frontend: Open your browser and navigate to `http://localhost:8501`
+   - Backend API: Accessible at `http://localhost:8000/predict`
